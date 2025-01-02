@@ -7,6 +7,7 @@ A simple Docker setup for Supabase.
 - Remove some unnecessary services, including `realtime`, `storage` and `function`.
 - Add support for OAuth providers.
 - Add support for EMail Template.
+- Add SSL support.
 
 ## Getting started
 
@@ -65,7 +66,7 @@ curl 'https://<PROJECT_REF>.supabase.co/auth/v1/settings' \
 
 Like the official Supabase, you can use SMTP to send emails. In your `.env` file, add the following:
 
-```env
+```shell
 SMTP_ADMIN_EMAIL=
 SMTP_HOST=
 SMTP_PORT=
@@ -97,6 +98,15 @@ MAILER_TEMPLATES_CONFIRMATION="https://example.com/templates/confirm.html"
 MAILER_TEMPLATES_RECOVERY="https://example.com/templates/recovery.html"
 MAILER_TEMPLATES_MAGIC_LINK="https://example.com/templates/magic-link.html"
 MAILER_TEMPLATES_EMAIL_CHANGE="https://example.com/templates/email-change.html"
+```
+
+## SSL Configuration
+
+Generate your cert and key files and copy it to `./volumns/ssl/` directory. In your `.env` file, add the following:
+
+```shell
+SSL_CERT=""
+KONG_SSL_CERT_KEY=""
 ```
 
 ## Other Configuration

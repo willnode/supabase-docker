@@ -105,8 +105,8 @@ MAILER_TEMPLATES_EMAIL_CHANGE="https://example.com/templates/email-change.html"
 Generate your cert and key files and copy it to `./volumns/ssl/` directory. In your `.env` file, add the following:
 
 ```shell
-SSL_CERT=""
-KONG_SSL_CERT_KEY=""
+SSL_CERT="example.crt"
+KONG_SSL_CERT_KEY="example.key"
 ```
 
 ## Other Configuration

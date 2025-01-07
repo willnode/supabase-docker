@@ -24,7 +24,12 @@ git clone https://github.com/alex-guoba/supabase-docker.git
 cd supabase-docker
 cp .env.example .env
 # Edit .env file to your needs
+
+# Start Supabase
 docker compose up -d
+
+# Stop Supabase
+docker compose down
 ```
 
 ### Usage
@@ -40,7 +45,7 @@ You can configure Supabase by editing the `.env` file.
 - `SITE_URL`: The URL of your Application.
 - `API_EXTERNAL_URL`: The URL of your Supabase Instance.
 
-## Auth Provider
+### Auth Provider
 
 Add OAuth provider to auth section of  `docker-compose` file. For example, to add Github OAuth provider:
 
@@ -62,7 +67,7 @@ curl 'https://<PROJECT_REF>.supabase.co/auth/v1/settings' \
 -H "Authorization: Bearer <ANON_KEY>"
 ```
 
-## SMTP
+### SMTP
 
 Like the official Supabase, you can use SMTP to send emails. In your `.env` file, add the following:
 
@@ -77,7 +82,7 @@ SMTP_SENDER_NAME=
 
 See [Supabase SMTP](https://supabase.com/docs/guides/auth/auth-smtp) for more details.
 
-## Email Templates
+### Email Templates
 
 You can customize the email templates by editing the files in `./docker-compose.yml`.
 
@@ -100,7 +105,7 @@ MAILER_TEMPLATES_MAGIC_LINK="https://example.com/templates/magic-link.html"
 MAILER_TEMPLATES_EMAIL_CHANGE="https://example.com/templates/email-change.html"
 ```
 
-## SSL Configuration
+### SSL Configuration
 
 Generate your cert and key files and copy it to `./volumns/ssl/` directory. In your `.env` file, add the following:
 
@@ -109,17 +114,27 @@ SSL_CERT="example.crt"
 KONG_SSL_CERT_KEY="example.key"
 ```
 
-## Other Configuration
+### Other Configuration
 
 API Keys, Secrets, and other configurations can be found in the official Supabase documentation. Make sure to update your `.env` file accordingly.
 
 See [Docker Configuration](https://supabase.com/docs/guides/self-hosting/docker) for more details.
 
-### License
+
+## Development
+
+All development is done in the `main` branch.
+There is a `develop` docker file for development. You can override the `docker-compose.yml` file to use it:
+
+```
+docker compose -f docker-compose.yml -f ./dev/docker-compose.dev.yml up
+```
+
+## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
 
-### Contributing
+## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 

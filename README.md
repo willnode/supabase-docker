@@ -8,6 +8,7 @@ A simple Docker setup for Supabase.
 - Add support for OAuth providers.
 - Add support for EMail Template.
 - Add SSL support.
+- Enable deploy in [dokploy](https://dokploy.com/)
 
 ## Getting started
 
@@ -129,6 +130,26 @@ There is a `develop` docker file for development. You can override the `docker-c
 ```
 docker compose -f docker-compose.yml -f ./dev/docker-compose.dev.yml up
 ```
+
+##  Deploy in Dokploy
+
+[Dokploy](https://dokploy.com/) is a stable deployment platform for Docker applications. It is a simple way to deploy your Docker application to the cloud.
+
+Dokploy provide some [templates](https://docs.dokploy.com/docs/core/templates) for all sort of Docker applications. we can use it to deploy Supabase.
+
+If you want some customization, you can deploy through your `docker-compose.yml` file.
+Here is the process to deploy Supabase from `docker-compose.yml` file.
+1. Create a new project in Dokploy.
+2. Create a Compose service in project.
+3. Configure the deployment.
+- Provider: set your github repo in github provider. or you can paste the contents of `./docker-compose.dokploy.yml` in raw provider.
+- Environment: paste the contents of `./.env` in environment.
+- Volumes: add all of volume files in volumes setting. for example: 
+  - Content: content of [vector.sql](./volumes/logs/vector.yml)
+  - Path: set to `/volumes/logs/vector.yml`
+- Docker links: enable `Isolate Deployment` in Utilities configuration.
+- Domains: set your domain in domains.
+4. Deploy.
 
 ## License
 

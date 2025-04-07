@@ -115,6 +115,14 @@ SSL_CERT="example.crt"
 KONG_SSL_CERT_KEY="example.key"
 ```
 
+Uncomment the following line in `docker-compose.yml`:
+
+```yaml
+KONG_SSL_CERT: /mnt/ssl/${SSL_CERT_FILENAME}
+KONG_SSL_CERT_KEY: /mnt/ssl/${SSL_CERT_KEY_FILENAME}
+```
+
+
 ### Other Configuration
 
 API Keys, Secrets, and other configurations can be found in the official Supabase documentation. Make sure to update your `.env` file accordingly.
@@ -137,7 +145,8 @@ docker compose -f docker-compose.yml -f ./dev/docker-compose.dev.yml up
 
 Dokploy provide some [templates](https://docs.dokploy.com/docs/core/templates) for all sort of Docker applications. we can use it to deploy Supabase.
 
-If you want some customization, you can deploy through your `docker-compose.yml` file.
+If you want some customization, you can deploy through your `docker-compose.yml` file. Here is an [example](./docker-compose.dokploy.yml).
+
 Here is the process to deploy Supabase from `docker-compose.yml` file.
 1. Create a new project in Dokploy.
 2. Create a Compose service in project.

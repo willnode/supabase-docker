@@ -160,7 +160,6 @@ services:
   meta:
     container_name: supabase-meta
     image: supabase/postgres-meta:v0.84.2
-    depends_on:
     restart: unless-stopped
     environment:
       PG_META_PORT: 8080

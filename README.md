@@ -4,11 +4,10 @@ A simple Docker setup for Supabase.
 
 ## Features
 
-- Remove some unnecessary services, including `realtime`, `storage` and `function`.
+- Remove some unnecessary services, including `realtime`, `storage`, `analytics`, `vector`, `supavisor` and `function`.
 - Add support for OAuth providers.
 - Add support for EMail Template.
-- Add SSL support.
-- Enable deploy in [dokploy](https://dokploy.com/)
+- Use external database.
 
 ## Getting started
 
@@ -21,7 +20,7 @@ A simple Docker setup for Supabase.
 ### Installation
 
 ```bash
-git clone https://github.com/alex-guoba/supabase-docker.git
+git clone https://github.com/willnode/supabase-docker.git
 cd supabase-docker
 cp .env.example .env
 # Edit .env file to your needs
@@ -105,23 +104,6 @@ MAILER_TEMPLATES_RECOVERY="https://example.com/templates/recovery.html"
 MAILER_TEMPLATES_MAGIC_LINK="https://example.com/templates/magic-link.html"
 MAILER_TEMPLATES_EMAIL_CHANGE="https://example.com/templates/email-change.html"
 ```
-
-### SSL Configuration
-
-Generate your cert and key files and copy it to `./volumns/ssl/` directory. In your `.env` file, add the following:
-
-```shell
-SSL_CERT="example.crt"
-KONG_SSL_CERT_KEY="example.key"
-```
-
-Uncomment the following line in `docker-compose.yml`:
-
-```yaml
-KONG_SSL_CERT: /mnt/ssl/${SSL_CERT_FILENAME}
-KONG_SSL_CERT_KEY: /mnt/ssl/${SSL_CERT_KEY_FILENAME}
-```
-
 
 ### Other Configuration
 

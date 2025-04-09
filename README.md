@@ -4,7 +4,7 @@ A simple Docker setup for Supabase.
 
 ## Features
 
-- Remove some unnecessary services, including `realtime`, `storage`, `vector`, `supavisor` and `function`.
+- Remove some unnecessary services, including `realtime`, `storage`, `analytics`, `vector`, `supavisor` and `function`.
 - Add support for OAuth providers.
 - Add support for EMail Template.
 - Use external database.
